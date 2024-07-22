@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 #include <SDL.h>
+#include "Rect.h"
+#include "Renderer.h"
+
 #undef main
 
 #define SCREEN_WIDTH 800
@@ -14,7 +17,7 @@ public:
 	void run();
 private:
 	SDL_Window* _window;
-	SDL_Renderer* _renderer;
+	Renderer* _renderer;
 	SDL_Event _event;
 	bool _isRunning;
 };

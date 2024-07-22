@@ -11,17 +11,13 @@ Engine::Engine()
 	{
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 	}
-	_renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-	if (_renderer == nullptr)
-	{
-		std::cout << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
-	}
+	_renderer = new Renderer(_window);
+
 	_isRunning = true;
 }
 
 Engine::~Engine()
 {
-	SDL_DestroyRenderer(_renderer);
 	SDL_DestroyWindow(_window);
 	SDL_Quit();
 }
@@ -37,7 +33,10 @@ void Engine::run()
 				_isRunning = false;
 			}
 		}
-		SDL_RenderClear(_renderer);
-		SDL_RenderPresent(_renderer);
+		_renderer->setRendererColor(Color(255, 255, 255, 255));
+		SDL_RenderClear(_renderer->getRenderer());
+
+		_renderer->drawRect(new Rect(0, 0, 100, 100, Color(255, 0, 0, 255)));
+		SDL_RenderPresent(_renderer->getRenderer());
 	}
 }

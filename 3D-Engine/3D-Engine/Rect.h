@@ -1,19 +1,20 @@
 #pragma once
+#include "Color.h"
 #include <SDL_rect.h>
 
 
-class BetterRect : public SDL_Rect
+class Rect : public SDL_Rect
 {
 public:
-    BetterRect(int x, int y, int w, int h, SDL_Color color);
+    Rect(int x, int y, int w, int h, Color color);
 
 
     float& getXPosition();
     float& getYPosition();
     float getWidth();
     float getHeight();
-    SDL_Color getColor();
-    void setColor(SDL_Color color);
+    Color getColor();
+    void setColor(Color color);
     unsigned int getId();
 
     float getTop();
@@ -38,7 +39,7 @@ private:
     float _xPosition;
     float _yPosition;
 
-    SDL_Color _color;
+    Color _color;
 
     unsigned int _id;
 };
