@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include <iostream>
 
 Renderer* Renderer::_instance = nullptr;
 
@@ -40,5 +39,17 @@ void Renderer::setRendererColor(Color color)
 void Renderer::drawRect(Rect* rect)
 {
 	setRendererColor(rect->getColor());
-	SDL_RenderFillRect(_renderer, rect);
+	SDL_RenderFillRect(_renderer, rect->getSDL_Rect());
+}
+
+void Renderer::drawTriangle(Triangle* triangle)
+{
+	Color color = triangle->getColor();
+
+	vector<SDL_Vertex> vertexes;
+	vertexes.push_back({ SDL_FPoint{triangle->getX1(), triangle->getY1()}, SDL_Color{ color.r, color.g, color.b, color.a}, SDL_FPoint{0}});
+	vertexes.push_back({ SDL_FPoint{triangle->getX2(), triangle->getY2()}, SDL_Color{ color.r, color.g, color.b, color.a}, SDL_FPoint{0}});
+	vertexes.push_back({ SDL_FPoint{triangle->getX3(), triangle->getY3()}, SDL_Color{ color.r, color.g, color.b, color.a}, SDL_FPoint{0}});
+
+	SDL_RenderGeometry(_renderer, nullptr, vertexes.data(), vertexes.size(), nullptr, 0);
 }

@@ -37,6 +37,7 @@ void Engine::run()
 		SDL_RenderClear(_renderer->getRenderer());
 
 		_renderer->drawRect(new Rect(0, 0, 100, 100, Color(255, 0, 0, 255)));
+		_renderer->drawTriangle(new Triangle(400, 150, 200, 450, 600, 450, Color(0, 255, 0, 255)));
 		SDL_RenderPresent(_renderer->getRenderer());
 	}
 }

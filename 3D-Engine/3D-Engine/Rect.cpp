@@ -1,108 +1,88 @@
 #include "Rect.h"
 
-unsigned int Rect::nextId = 0;
-
-Rect::Rect(int x, int y, int w, int h, Color color) : _color(color)
+Rect::Rect(float x, float y, float width, float height, Color color) : Shape(color)
 {
-    this->x = x;
-    this->y = y;
-    this->w = w;
-    this->h = h;
-
-    _xPosition = x;
-    _yPosition = y;
-
-    _id = generateId();
+    _x = x;
+    _y = y;
+    _width = width;
+    _height = height;
 }
 
-unsigned int Rect::generateId()
+float& Rect::getX()
 {
-    unsigned int id = nextId;
-    nextId++;
-    return id;
+    return _x;
 }
 
-
-float& Rect::getXPosition()
+float& Rect::getY()
 {
-    return _xPosition;
-}
-
-float& Rect::getYPosition()
-{
-    return _yPosition;
+    return _y;
 }
 
 float Rect::getWidth()
 {
-    return w;
+    return _width;
 }
 
 float Rect::getHeight()
 {
-    return h;
-}
-
-Color Rect::getColor()
-{
-    return _color;
-}
-
-void Rect::setColor(Color color)
-{
-    _color = color;
-}
-
-unsigned int Rect::getId()
-{
-    return _id;
+    return _height;
 }
 
 float Rect::getTop()
 {
-    return _yPosition;
+    return _y;
 }
 
 float Rect::getBottom()
 {
-    return _yPosition + (float)h;
+    return _y + _height;
 }
 
 float Rect::getLeft()
 {
-    return _xPosition;
+    return _x;
 }
 
 float Rect::getRight()
 {
-    return _xPosition + (float)w;
+    return _x + _width;
 }
 
 void Rect::setTop(float top)
 {
-    _yPosition = top;
+    _y = top;
 }
 void Rect::setBottom(float bottom)
 {
-    _yPosition = bottom - (float)h;
+    _y = bottom - _height;
 }
 
 void Rect::setLeft(float left)
 {
-    _xPosition = left;
+    _x = left;
 }
 
 void Rect::setRight(float right)
 {
-    _xPosition = right - (float)w;
+    _x = right - _width;
 }
 
 void Rect::setHeight(int height)
 {
-    h = height;
+    _height = height;
 }
 
 void Rect::setWidth(int width)
 {
-    w = width;
+    _width = width;
+}
+
+SDL_Rect* Rect::getSDL_Rect()
+{
+    SDL_Rect sdl_rect;
+    sdl_rect.x = _x;
+    sdl_rect.y = _y;
+    sdl_rect.w = _width;
+    sdl_rect.h = _height;
+    return &sdl_rect;
 }

@@ -2,6 +2,11 @@
 
 #include <SDL_render.h>
 #include "Rect.h"
+#include "Triangle.h"
+#include <vector>
+#include <iostream>
+
+using std::vector;
 
 class Renderer
 {
@@ -13,6 +18,7 @@ public:
 
 	void setRendererColor(Color color);
 	void drawRect(Rect* rect);
+	void drawTriangle(Triangle* triangle);
 
 private:
 	SDL_Renderer* _renderer;

@@ -1,21 +1,19 @@
 #pragma once
 #include "Color.h"
+#include "Shape.h"
 #include <SDL_rect.h>
 
 
-class Rect : public SDL_Rect
+class Rect : public Shape
 {
 public:
-    Rect(int x, int y, int w, int h, Color color);
+    Rect(float x, float y, float width, float height, Color color);
 
 
-    float& getXPosition();
-    float& getYPosition();
+    float& getX();
+    float& getY();
     float getWidth();
     float getHeight();
-    Color getColor();
-    void setColor(Color color);
-    unsigned int getId();
 
     float getTop();
     float getBottom();
@@ -30,16 +28,11 @@ public:
     void setHeight(int height);
     void setWidth(int width);
 
+    SDL_Rect* getSDL_Rect();
+
 private:
-
-    static unsigned int generateId();
-    static unsigned int nextId;
-
-    // support floats for positions
-    float _xPosition;
-    float _yPosition;
-
-    Color _color;
-
-    unsigned int _id;
+    float _x;
+    float _y;
+    float _width;
+    float _height;
 };
