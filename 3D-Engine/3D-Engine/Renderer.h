@@ -6,6 +6,10 @@
 #include <vector>
 #include <iostream>
 
+#include "Point3D.h"
+
+#define POINT_RADIUS 10
+
 using std::vector;
 
 class Renderer
@@ -19,6 +23,7 @@ public:
 	void setRendererColor(Color color);
 	void drawRect(Rect* rect);
 	void drawTriangle(Triangle* triangle);
+	void drawPoint(Point3D point);
 
 private:
 	SDL_Renderer* _renderer;

@@ -2,10 +2,10 @@
 
 #include "Color.h"
 
-class Shape
+class Drawable
 {
 public:
-    Shape(Color color);
+    Drawable(Color color);
 
     Color getColor();
     void setColor(Color color);

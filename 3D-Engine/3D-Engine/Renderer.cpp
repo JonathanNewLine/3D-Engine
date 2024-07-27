@@ -1,5 +1,6 @@
 #include "Renderer.h"
 
+
 Renderer* Renderer::_instance = nullptr;
 
 Renderer::Renderer(SDL_Window* window)
@@ -53,3 +54,26 @@ void Renderer::drawTriangle(Triangle* triangle)
 
 	SDL_RenderGeometry(_renderer, nullptr, vertexes.data(), vertexes.size(), nullptr, 0);
 }
+
+void Renderer::drawPoint(Point3D point)
+{
+	Color color = point.getColor();
+	setRendererColor(color);
+
+	int x = point.x;
+	int y = point.y;
+
+	for (int w = 0; w < POINT_RADIUS * 2; w++)
+	{
+		for (int h = 0; h < POINT_RADIUS * 2; h++)
+		{
+			int dx = POINT_RADIUS - w;
+			int dy = POINT_RADIUS - h;
+			if ((dx*dx + dy*dy) <= (POINT_RADIUS * POINT_RADIUS))
+			{
+				SDL_RenderDrawPoint(_renderer, x + dx, y + dy);
+			}
+		}
+	}
+}
+

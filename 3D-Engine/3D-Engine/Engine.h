@@ -2,6 +2,8 @@
 #include <iostream>
 #include <SDL.h>
 #include "Renderer.h"
+#include "MatrixHelper.h"
+#include "Point3D.h"
 
 #undef main
 

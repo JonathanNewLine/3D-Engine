@@ -1,6 +1,6 @@
 #include "Rect.h"
 
-Rect::Rect(float x, float y, float width, float height, Color color) : Shape(color)
+Rect::Rect(float x, float y, float width, float height, Color color) : Drawable(color)
 {
     _x = x;
     _y = y;

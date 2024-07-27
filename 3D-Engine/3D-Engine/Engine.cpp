@@ -33,11 +33,23 @@ void Engine::run()
 				_isRunning = false;
 			}
 		}
-		_renderer->setRendererColor(Color(255, 255, 255, 255));
+
+		_renderer->setRendererColor(Color(0, 0, 0, 255));
 		SDL_RenderClear(_renderer->getRenderer());
 
-		_renderer->drawRect(new Rect(0, 0, 100, 100, Color(255, 0, 0, 255)));
-		_renderer->drawTriangle(new Triangle(400, 150, 200, 450, 600, 450, Color(0, 255, 0, 255)));
+		Point3D pointArray[] = {
+			Point3D(100, 100, 0),
+			Point3D(200, 100, 0),
+			Point3D(100, 200, 0),
+			Point3D(200, 200, 0)
+		};
+
+		for (int i = 0; i < 4; i++)
+		{
+			Point3D rotatedPoint = Point3D(MatrixHelper::MatMultiply(MatrixHelper::CreateRotationX(10), pointArray[i].toMatrix()));
+			_renderer->drawPoint(rotatedPoint);
+		}
+
 		SDL_RenderPresent(_renderer->getRenderer());
 	}
 }

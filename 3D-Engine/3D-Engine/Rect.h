@@ -1,10 +1,10 @@
 #pragma once
 #include "Color.h"
-#include "Shape.h"
+#include "Drawable.h"
 #include <SDL_rect.h>
 
 
-class Rect : public Shape
+class Rect : public Drawable
 {
 public:
     Rect(float x, float y, float width, float height, Color color);

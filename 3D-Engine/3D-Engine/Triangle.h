@@ -1,9 +1,9 @@
 #pragma once
-#include "Shape.h"
+#include "Drawable.h"
 #include "Color.h"
 #include "SDL_render.h"
 
-class Triangle : public Shape
+class Triangle : public Drawable
 {
 public:
 	Triangle(float x1, float y1, float x2, float y2, float x3, float y3, Color color);
