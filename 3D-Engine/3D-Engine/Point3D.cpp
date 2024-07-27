@@ -7,22 +7,28 @@ Point3D::Point3D(float x, float y, float z, Color color) : Drawable(color)
 	this->z = z;
 }
 
-Point3D::Point3D(Matrix matrix, Color color) : Drawable(color)
+void Point3D::operator*=(float scalar)
 {
-	this->x = matrix[0][0];
-	this->y = matrix[1][0];
-	this->z = matrix[2][0];
+	x *= scalar;
+	y *= scalar;
+	z *= scalar;
 }
 
-Matrix Point3D::toMatrix()
+void Point3D::operator+=(float scalar)
 {
-		Matrix matrix = {
-		{x},
-		{y},
-		{z},
-	};
-
-	return matrix;
+	x += scalar;
+	y += scalar;
+	z += scalar;
 }
 
+void Point3D::operator+=(Point3D point)
+{
+	x += point.x;
+	y += point.y;
+	z += point.z;
+}
 
+Point3D Point3D::operator+(Point3D point)
+{
+	return Point3D(x + point.x, y + point.y, z + point.z);
+}

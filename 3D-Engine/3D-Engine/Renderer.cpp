@@ -55,7 +55,7 @@ void Renderer::drawTriangle(Triangle* triangle)
 	SDL_RenderGeometry(_renderer, nullptr, vertexes.data(), vertexes.size(), nullptr, 0);
 }
 
-void Renderer::drawPoint(Point3D point)
+void Renderer::drawPoint(Point2D point)
 {
 	Color color = point.getColor();
 	setRendererColor(color);
@@ -75,5 +75,13 @@ void Renderer::drawPoint(Point3D point)
 			}
 		}
 	}
+}
+
+void Renderer::drawLine(Point2D point1, Point2D point2)
+{
+	Color color = point1.getColor();
+	setRendererColor(color);
+
+	SDL_RenderDrawLine(_renderer, point1.x, point1.y, point2.x, point2.y);
 }
 

@@ -3,7 +3,9 @@
 #include <SDL.h>
 #include "Renderer.h"
 #include "MatrixHelper.h"
+#include "Cube.h"
 #include "Point3D.h"
+#include "Point2D.h"
 
 #undef main
 

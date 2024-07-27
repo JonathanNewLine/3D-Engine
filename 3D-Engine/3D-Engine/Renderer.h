@@ -6,7 +6,7 @@
 #include <vector>
 #include <iostream>
 
-#include "Point3D.h"
+#include "Point2D.h"
 
 #define POINT_RADIUS 10
 
@@ -23,7 +23,8 @@ public:
 	void setRendererColor(Color color);
 	void drawRect(Rect* rect);
 	void drawTriangle(Triangle* triangle);
-	void drawPoint(Point3D point);
+	void drawPoint(Point2D point);
+	void drawLine(Point2D point1, Point2D point2);
 
 private:
 	SDL_Renderer* _renderer;

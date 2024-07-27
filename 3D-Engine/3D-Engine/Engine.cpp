@@ -24,6 +24,7 @@ Engine::~Engine()
 
 void Engine::run()
 {
+	Cube* cube = new Cube(Point3D(400, 300, 400), 200);
 	while (_isRunning)
 	{
 		while (SDL_PollEvent(&_event))
@@ -37,18 +38,11 @@ void Engine::run()
 		_renderer->setRendererColor(Color(0, 0, 0, 255));
 		SDL_RenderClear(_renderer->getRenderer());
 
-		Point3D pointArray[] = {
-			Point3D(100, 100, 0),
-			Point3D(200, 100, 0),
-			Point3D(100, 200, 0),
-			Point3D(200, 200, 0)
-		};
+		cube->rotateX(0.01);
+		cube->rotateY(0.015);
+		cube->rotateZ(0.0175);
 
-		for (int i = 0; i < 4; i++)
-		{
-			Point3D rotatedPoint = Point3D(MatrixHelper::MatMultiply(MatrixHelper::CreateRotationX(10), pointArray[i].toMatrix()));
-			_renderer->drawPoint(rotatedPoint);
-		}
+		cube->renderCube();
 
 		SDL_RenderPresent(_renderer->getRenderer());
 	}
